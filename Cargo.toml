@@ -54,11 +54,11 @@ env_logger =  {version = "0.8", default-features = false, features = ["termcolor
 futures-util = { version = "0.3", default_features = false }
 getopts = "0.2.21"
 hex = "0.4"
-hyper = "0.14"
+hyper = "0.13.10"
 log = "0.4"
 rpassword = "5.0"
 thiserror = "1.0"
-tokio = { version = "1", features = ["rt", "rt-multi-thread", "macros", "signal", "sync", "process"] }
+tokio = { version = "0.2.22", features = ["rt-core", "rt-threaded", "macros", "signal", "sync", "process"] }
 url = "2.2"
 sha-1 = "0.9"
 

@@ -10,11 +10,10 @@ use std::time::{SystemTime, UNIX_EPOCH};
 use byteorder::{BigEndian, ByteOrder};
 use bytes::Bytes;
 use futures_core::TryStream;
-use futures_util::{future, ready, StreamExt, TryStreamExt};
+use futures_util::{future, FutureExt, ready, StreamExt, TryStreamExt};
 use once_cell::sync::OnceCell;
 use thiserror::Error;
 use tokio::sync::mpsc;
-use tokio_stream::wrappers::UnboundedReceiverStream;
 
 use crate::apresolve::apresolve;
 use crate::audio_key::AudioKeyManager;
@@ -121,7 +120,7 @@ impl Session {
             session_id,
         }));
 
-        let sender_task = UnboundedReceiverStream::new(sender_rx)
+        let sender_task = sender_rx
             .map(Ok)
             .forward(sink);
         let receiver_task = DispatchTask(stream, session.weak());

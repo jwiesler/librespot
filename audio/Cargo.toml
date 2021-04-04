@@ -13,8 +13,8 @@ version = "0.3.1"
 [dependencies]
 aes-ctr = "0.6"
 byteorder = "1.4"
-bytes = "1.0"
+bytes = "0.5.6"
 log = "0.4"
 futures-util = { version = "0.3", default_features = false }
 tempfile = "3.1"
-tokio = { version = "1", features = ["sync", "macros"] }
+tokio = { version = "0.2.22", features = ["sync", "macros"] }
